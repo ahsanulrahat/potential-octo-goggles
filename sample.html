@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahat.id - Developer Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fff;
+            padding: 24px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.625rem;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        .download-resume {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .download-resume:hover {
+            background-color: #2563EB;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Hero section */
+  .hero {
+            background-color: #ffffff;
+            background-image: url('assets/Hero-bg.png');
+            background-repeat: repeat;
+            background-size: 520px auto;
+            padding: 96px 0 112px;
+            color: #0F172A;
+    position: relative;
+            overflow: hidden;
+}
+
+        .hero-pattern { display: none; }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            text-align: center;
+        }
+
+        /* Title with logo behind */
+        .hero-title {
+            position: relative;
+            display: inline-block;
+            padding-top: 180px; /* space for the logo that sits behind */
+            z-index: 0;
+        }
+
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -70%);
+            width: 240px;
+            height: 240px;
+            background: url('assets/Group.png') center / contain no-repeat;
+            z-index: -1;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-family: 'Azeret Mono', monospace;
+            font-size: 3rem;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #0F172A;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 24px;
+            opacity: 0.9;
+            line-height: 1.65;
+            max-width: 720px;
+            color: #475569;
+        }
+
+        .hero-image { display: none; }
+
+        .hero-image img {
+            width: 240px;
+            height: auto;
+            display: inline-block;
+        }
+
+        .contact-btn {
+            background-color: #0F172A;
+            color: #ffffff;
+            padding: 14px 24px;
+            border: 1px solid #0F172A;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #111827;
+            transform: translateY(-1px);
+        }
+
+        /* Section styles */
+        section {
+            padding: 96px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .section-title h2 {
+            font-size: 2.75rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title p {
+            color: #6B7280;
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 48px 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(229, 231, 235, 0.6);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .card-image {
+            margin-bottom: 32px;
+        }
+
+        .card-image img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+        }
+
+        .card h3 {
+            margin-bottom: 16px;
+            font-size: 1.375rem;
+            color: #1a1a1a;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .card p {
+            color: #6B7280;
+            margin-bottom: 32px;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .learn-more {
+            background-color: #3B82F6;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .learn-more:hover {
+            background-color: #2563EB;
+            transform: translateY(-1px);
+        }
+
+        /* Inspiration section */
+        .inspiration {
+            background-color: #fff;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Target sections */
+        .targets {
+            background-color: #F9FAFB;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .target-card {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 40px 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+
+        .target-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .target-card img {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 24px;
+            object-fit: contain;
+        }
+
+        .target-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .target-card a {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .target-card a:hover {
+            text-decoration: underline;
+            color: #2563EB;
+        }
+
+        /* Next target section */
+        .next-targets {
+            background-color: #fff;
+        }
+
+        /* Support section */
+        .support {
+            background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="network" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M10 10 L40 40 M40 10 L10 40 M25 0 L25 50 M0 25 L50 25" stroke="white" stroke-width="0.5" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23network)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .support-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .support h2 {
+            font-size: 3.25rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .support p {
+            max-width: 640px;
+            margin: 0 auto 48px;
+            opacity: 0.95;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        .support-form {
+            display: flex;
+            max-width: 480px;
+            margin: 0 auto;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .support-form input {
+            flex-grow: 1;
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .support-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .support-form input:focus {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .support-form button {
+            background-color: #10B981;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .support-form button:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #fff;
+            padding: 80px 0 40px;
+            text-align: center;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .footer-content {
+            margin-bottom: 48px;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 32px;
+            color: #1a1a1a;
+            font-size: 1.625rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .social-links {
+            margin-bottom: 48px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 16px;
+            transition: all 0.2s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        .social-links img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .copyright {
+            color: #6B7280;
+            font-size: 0.875rem;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 32px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 80px 0 96px;
+            }
+            .hero h1 { font-size: 2.75rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 56px 0 72px; }
+            .hero-content { gap: 20px; }
+            .hero-image { margin-bottom: 8px; }
+            .hero h1 { font-size: 2.25rem; }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .target-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 16px;
+            }
+
+            .support {
+                padding: 80px 0;
+            }
+
+            .support h2 {
+                font-size: 2.5rem;
+            }
+
+            .support-form {
+                flex-direction: column;
+                gap: 16px;
+                max-width: 320px;
+            }
+
+            .support-form input,
+            .support-form button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+
+            .card {
+                padding: 32px 24px;
+            }
+
+            .target-card {
+                padding: 32px 20px;
+            }
+
+            .target-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Rahat.id</div>
+                <a href="#" class="download-resume">Download Resume</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">"In the near future, I hope to become a Developer."</h1>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+                    <a href="#contact" class="contact-btn">Contact with me</a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Web Development Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Web Development??</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/Group 3.png" alt="Coding and Change">
+                    </div>
+                    <h3>I will Do Coding and Change The World</h3>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/Group 4.png" alt="Modern Web Systems">
+                    </div>
+                    <h3>I will help People by creating Modern Web Systems</h3>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/Group 3.png" alt="Coding and Change">
+                    </div>
+                    <h3>I will Do Coding and Change The World</h3>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Inspiration Section -->
+    <section class="inspiration">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Inspiration</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/AW1yfBKRMKc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Current Target Section -->
+    <section class="targets">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Current Target</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+            </div>
+            <div class="target-grid">
+                <div class="target-card">
+                    <img src="assets/html.png" alt="HTML">
+                    <h3>HTML</h3>
+                    <a href="#">Learn More</a>
+                </div>
+                <div class="target-card">
+                    <img src="assets/css.png" alt="CSS">
+                    <h3>CSS</h3>
+                    <a href="#">Learn More</a>
+                </div>
+                <div class="target-card">
+                    <img src="assets/js.png" alt="JavaScript">
+                    <h3>JavaScript</h3>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Next Target Section -->
+    <section class="next-targets">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Next Target</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+            </div>
+            <div class="target-grid">
+                <div class="target-card">
+                    <img src="assets/react.png" alt="React">
+                    <h3>ReactJS</h3>
+                    <a href="#">Learn More</a>
+                </div>
+                <div class="target-card">
+                    <img src="assets/nodejs.png" alt="Node.js">
+                    <h3>Node.js</h3>
+                    <a href="#">Learn More</a>
+                </div>
+                <div class="target-card">
+                    <img src="assets/mongodb.png" alt="MongoDB">
+                    <h3>MongoDB</h3>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support" id="contact">
+        <div class="container">
+            <div class="support-content">
+                <h2>I need Support</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text.</p>
+                <div class="support-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>An Open Continent by Azizul Haossain</h3>
+                <div class="social-links">
+                    <a href="#">
+                        <img src="assets/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="#">
+                        <img src="assets/github.png" alt="GitHub">
+                    </a>
+                    <a href="#">
+                        <img src="assets/linkedin-icon 1.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Rahat.id. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
